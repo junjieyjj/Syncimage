@@ -1,0 +1,5 @@
+requests
+PyYaml
+docker
+retry
+six
