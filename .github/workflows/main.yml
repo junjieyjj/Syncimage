@@ -1,4 +1,4 @@
-name: Ferryman
+name: Syncimage
 
 on:
   push:
