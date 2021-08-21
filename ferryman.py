@@ -162,9 +162,11 @@ def requests_docker(items, namespaces = "none"):
     for i in range(100):
         page = (i + 1)
         url = (f"https://hub.docker.com/v2/repositories/{namespaces}/{items}/tags?page_size=100&page={page}")
-        print(url)
         r = requests.get(url)
         buffer_list = r.json().get("results")
+        if buffer_list is None:
+            print(url)
+            buffer_list = []
 
         if len(buffer_list) != 0:
             logging.info (f"The { page } page, tags count {len (buffer_list)}")
