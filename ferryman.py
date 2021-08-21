@@ -166,7 +166,7 @@ def requests_docker(items, namespaces = "none"):
         buffer_list = r.json().get("results")
         if buffer_list is None:
             print(url)
-            # buffer_list = []
+            buffer_list = []
 
         if len(buffer_list) != 0:
             logging.info (f"The { page } page, tags count {len (buffer_list)}")
