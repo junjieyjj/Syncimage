@@ -229,14 +229,14 @@ def sync_images(image, src_repo, target_repo, tag_list):
             logging.info (f"Image Update: {dt}")
 
             logging.info (f"Pull Image: {image}, Tag: {tag}")
-            retry_call(pydocker.pull, fargs=[source], exceptions=Exception, tries=6, delay=10)
+            retry_call(pydocker.pull, fargs=[source], exceptions=Exception, tries=6, delay=300)
 
             logging.info (f"Tag  Image: {image}, Tag: {tag}")
             pydocker.tag(source, target)
             #pydocker.remove_image(source)
 
             logging.info (f"Push Image: {image}, Tag: {tag}")
-            retry_call(docker_push, fargs=[target, target_auth] , exceptions=Exception, tries=6, delay=10)
+            retry_call(docker_push, fargs=[target, target_auth] , exceptions=Exception, tries=6, delay=300)
             pydocker.remove_image(target)
 
             # 加载本地历史同步记录
